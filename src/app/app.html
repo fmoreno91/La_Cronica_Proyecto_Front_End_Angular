@@ -1,0 +1,102 @@
+<header class="site-header">
+  <div class="header-top">
+    <div class="container">
+      <span class="header-top-date mono">{{ today }}</span>
+      <span class="header-top-tag">Edición Digital</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="container">
+      <a routerLink="/" class="site-logo" (click)="closeMobileMenu()">
+        <span class="site-logo-name">La Crónica</span>
+        <span class="site-logo-sub">Plataforma de Noticias</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Inicio</a>
+        <a routerLink="/noticias" routerLinkActive="active" class="nav-link">Noticias</a>
+        <a routerLink="/favoritos" routerLinkActive="active" class="nav-link">
+          Favoritos
+          @if (news.favoriteIds().length > 0) {
+            <span class="fav-badge">{{ news.favoriteIds().length }}</span>
+          }
+        </a>
+        <a routerLink="/contacto" routerLinkActive="active" class="nav-link">Contacto</a>
+        <a routerLink="/admin" routerLinkActive="active" class="nav-link">Administrar</a>
+      </nav>
+      <button
+        class="hamburger"
+        [class.open]="mobileMenuOpen"
+        type="button"
+        [attr.aria-expanded]="mobileMenuOpen"
+        aria-label="Abrir o cerrar menú"
+        (click)="mobileMenuOpen = !mobileMenuOpen"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" [class.open]="mobileMenuOpen" aria-label="Menú móvil">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link" (click)="closeMobileMenu()">Inicio</a>
+    <a routerLink="/noticias" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Noticias</a>
+    <a routerLink="/favoritos" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">
+      Favoritos @if (news.favoriteIds().length > 0) {<span class="fav-badge">{{ news.favoriteIds().length }}</span>}
+    </a>
+    <a routerLink="/contacto" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Contacto</a>
+    <a routerLink="/admin" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Administrar</a>
+  </nav>
+</header>
+
+@if (news.loading()) {
+  <main class="page-main">
+    <div class="container load-state" role="status">Cargando noticias...</div>
+  </main>
+} @else if (news.loadError()) {
+  <main class="page-main">
+    <div class="container">
+      <section class="news-load-error" role="alert">
+        <p>No se pudieron cargar las noticias. Comprueba que el proyecto esté abierto mediante un servidor local.</p>
+        <button class="btn btn-outline" type="button" (click)="news.loadNoticias()">Reintentar</button>
+      </section>
+    </div>
+  </main>
+} @else {
+  <router-outlet />
+}
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a routerLink="/" class="footer-logo">La Crónica</a>
+        <p class="footer-desc">
+          Periodismo digital independiente para Colombia y el mundo.
+          Noticias verificadas, análisis profundo y cobertura en tiempo real.
+        </p>
+      </div>
+      <div>
+        <p class="footer-heading">Secciones</p>
+        <ul class="footer-links">
+          <li><a routerLink="/">Inicio</a></li>
+          <li><a routerLink="/noticias">Noticias</a></li>
+          <li><a routerLink="/favoritos">Favoritos</a></li>
+          <li><a routerLink="/contacto">Contacto</a></li>
+          <li><a routerLink="/admin">Administrar</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Contacto</p>
+        <ul class="footer-contact">
+          <li>redaccion@lacronica.co</li>
+          <li>+57 601 234 5678</li>
+          <li>Bogotá, Colombia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span class="footer-copy mono">&copy; 2026 La Crónica — Todos los derechos reservados</span>
+      <span class="mono footer-tech">Hecho con Angular</span>
+    </div>
+  </div>
+</footer>

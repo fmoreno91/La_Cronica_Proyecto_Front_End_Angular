@@ -1,0 +1,117 @@
+@if (hero(); as lead) {
+  <section class="hero" aria-label="Noticia principal">
+    <img class="hero-bg" [src]="lead.image" [alt]="lead.title">
+    <div class="hero-content">
+      <span class="badge hero-badge" [class]="'badge hero-badge badge-' + lead.category">{{ lead.category }}</span>
+      <h1 class="hero-title">{{ lead.title }}</h1>
+      <p class="hero-summary">{{ lead.summary }}</p>
+      <div class="hero-meta-row">
+        <a class="btn btn-primary" [routerLink]="['/noticias', lead.id]">Leer artículo completo</a>
+        <span class="hero-meta mono">{{ lead.date }}</span>
+      </div>
+    </div>
+  </section>
+}
+
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-label">Hoy</span>
+    <span class="ticker-text">
+      Colombia lidera índice de biodiversidad latinoamericana &nbsp;&bull;&nbsp;
+      Nuevas rutas aéreas conectan 12 ciudades del país &nbsp;&bull;&nbsp;
+      Summit de Innovación en Medellín reunirá a 5.000 emprendedores &nbsp;&bull;&nbsp;
+      El MinTIC lanza convocatoria de becas de programación &nbsp;&bull;&nbsp;
+      Exportaciones de café especial crecen 34% en el primer semestre
+    </span>
+  </div>
+</div>
+
+<main class="page-main">
+  <div class="container">
+    <section class="welcome-section" aria-labelledby="welcomeTitle">
+      <h2 class="welcome-title" id="welcomeTitle">Bienvenido a La Crónica</h2>
+      <p class="welcome-text">
+        Tu fuente confiable de información sobre tecnología, educación, turismo, comercio
+        y ciencia en Colombia y el mundo. Noticias verificadas, análisis profundo
+        y cobertura en tiempo real.
+      </p>
+    </section>
+
+    <section aria-labelledby="featuredTitle">
+      <div class="section-heading">
+        <h2 class="section-title display" id="featuredTitle">Noticias Destacadas</h2>
+        <a routerLink="/noticias" class="btn-link">Ver todas &rarr;</a>
+      </div>
+      <div class="grid-3">
+        @for (article of featured(); track article.id) {
+          <app-news-card
+            [article]="article"
+            [favorite]="news.isFavorite(article.id)"
+            (favoriteToggled)="news.toggleFavorite($event)"
+          />
+        }
+      </div>
+    </section>
+
+    <section class="cta-band" aria-label="Llamada a la acción">
+      <div>
+        <h3 class="cta-title">Guarda las noticias que importan</h3>
+        <p class="cta-desc">Usa la función de favoritos para crear tu propia lista de lectura personalizada.</p>
+      </div>
+      <div class="cta-actions">
+        <a routerLink="/noticias" class="btn btn-primary">Explorar noticias</a>
+        <a routerLink="/contacto" class="btn btn-dark">Contactar</a>
+      </div>
+    </section>
+
+    @if (recent().length > 0) {
+      <section aria-labelledby="recentTitle">
+        <div class="section-heading">
+          <h2 class="section-title display" id="recentTitle"><span class="section-title-line">También hoy</span></h2>
+        </div>
+        <div class="grid-3">
+          @for (article of recent(); track article.id) {
+            <app-news-card
+              [article]="article"
+              [favorite]="news.isFavorite(article.id)"
+              (favoriteToggled)="news.toggleFavorite($event)"
+            />
+          }
+        </div>
+      </section>
+    }
+
+    <section class="testimonials-section" aria-labelledby="testimonialsTitle">
+      <h2 class="testimonials-title" id="testimonialsTitle">Lo que dicen nuestros lectores</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <blockquote>
+            <svg class="testimonial-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="testimonial-text">La Crónica es mi primera fuente cada mañana. Información verificada y análisis que realmente aporta a mi día a día profesional.</p>
+            <footer class="testimonial-author mono">Claudia Ramírez &middot; Bogotá</footer>
+          </blockquote>
+        </div>
+        <div class="testimonial">
+          <blockquote>
+            <svg class="testimonial-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="testimonial-text">Me encanta poder guardar artículos en favoritos. La función es simple pero muy útil para organizar mi lectura semanal.</p>
+            <footer class="testimonial-author mono">David Murillo &middot; Medellín</footer>
+          </blockquote>
+        </div>
+        <div class="testimonial">
+          <blockquote>
+            <svg class="testimonial-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="testimonial-text">Las noticias de ciencia y tecnología están escritas de forma que cualquiera puede entender. Excelente trabajo editorial.</p>
+            <footer class="testimonial-author mono">Patricia Solano &middot; Cali</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
