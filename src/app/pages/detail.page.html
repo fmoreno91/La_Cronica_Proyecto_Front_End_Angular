@@ -1,0 +1,48 @@
+<main class="page-main">
+  <div class="container detail-container">
+    @if (article(); as item) {
+      <article>
+        <a routerLink="/noticias" class="detail-back">&#8592; Volver a noticias</a>
+        <span class="badge detail-badge" [class]="'badge detail-badge badge-' + item.category">{{ item.category }}</span>
+        <h1 class="detail-title display">{{ item.title }}</h1>
+        <div class="detail-byline">
+          <span>Por {{ item.author }}</span>
+          <span>&middot;</span>
+          <span>{{ item.date }}</span>
+        </div>
+        <div class="detail-img-wrap">
+          <img [src]="item.image" [alt]="item.title">
+        </div>
+        <div class="detail-content">
+          @for (paragraph of paragraphs(item); track $index) {
+            <p>{{ paragraph }}</p>
+          }
+        </div>
+        <div class="detail-actions">
+          <button
+            class="btn"
+            [class.btn-primary]="news.isFavorite(item.id)"
+            [class.btn-outline]="!news.isFavorite(item.id)"
+            type="button"
+            [attr.aria-label]="news.isFavorite(item.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            (click)="news.toggleFavorite(item.id)"
+          >
+            <svg [attr.fill]="news.isFavorite(item.id) ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            {{ news.isFavorite(item.id) ? 'En favoritos' : 'Agregar a favoritos' }}
+          </button>
+          <p class="detail-fav-hint">
+            {{ news.isFavorite(item.id) ? 'Esta noticia está en tu lista de favoritos.' : 'Guarda esta noticia para leerla más tarde.' }}
+          </p>
+        </div>
+      </article>
+    } @else {
+      <div class="not-found">
+        <p>Noticia no encontrada.</p>
+        <a routerLink="/noticias" class="btn btn-primary">Ver todas las noticias</a>
+      </div>
+    }
+  </div>
+</main>

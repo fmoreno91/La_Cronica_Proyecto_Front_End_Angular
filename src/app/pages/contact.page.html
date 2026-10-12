@@ -1,0 +1,82 @@
+<main class="page-main">
+  <div class="container">
+    @if (success) {
+      <section class="success-card contact-success">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h1 class="success-title display">¡Mensaje recibido!</h1>
+        <p class="success-message">
+          Gracias, <strong>{{ sentName }}</strong>. Hemos recibido tu mensaje y te responderemos
+          a <strong>{{ sentEmail }}</strong> en los próximos días hábiles.
+        </p>
+        <p class="contact-demo-note">Este formulario es una demostración y no envía mensajes a un servicio externo.</p>
+        <button class="btn btn-outline" type="button" (click)="sendAnother()">Enviar otro mensaje</button>
+      </section>
+    } @else {
+      <div class="page-title-wrap">
+        <h1 class="page-title display">Contacto</h1>
+        <div class="divider-accent"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <p class="contact-intro">
+            ¿Tienes una noticia para reportar, una corrección que hacernos, o simplemente
+            quieres hablar con nuestro equipo? Escríbenos y te responderemos pronto.
+          </p>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Redacción general</p>
+            <p class="contact-info-value">redaccion@lacronica.co</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Publicidad</p>
+            <p class="contact-info-value">publicidad@lacronica.co</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Teléfono</p>
+            <p class="contact-info-value">+57 601 234 5678</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Dirección</p>
+            <p class="contact-info-value">Cra. 7 #74-21, Bogotá, Colombia</p>
+          </div>
+        </div>
+
+        <form #contactForm="ngForm" novalidate (ngSubmit)="submit(contactForm)">
+          <div class="form-group">
+            <label class="form-label" for="inputName">Nombre completo *</label>
+            <input class="form-control" [class.error]="(name.invalid || !name.value?.trim()) && (name.touched || contactForm.submitted)" id="inputName" name="name" type="text" placeholder="Tu nombre completo" autocomplete="name" required ngModel #name="ngModel">
+            @if ((name.invalid || !name.value?.trim()) && (name.touched || contactForm.submitted)) {
+              <p class="form-error">El nombre es obligatorio.</p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputEmail">Correo electrónico *</label>
+            <input class="form-control" [class.error]="(email.invalid || !email.value?.trim()) && (email.touched || contactForm.submitted)" id="inputEmail" name="email" type="email" placeholder="nombre@correo.com" autocomplete="email" required email ngModel #email="ngModel">
+            @if ((email.invalid || !email.value?.trim()) && (email.touched || contactForm.submitted)) {
+              <p class="form-error">
+                {{ email.errors?.['required'] || !email.value?.trim() ? 'El correo es obligatorio.' : 'Ingresa un correo electrónico válido.' }}
+              </p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputSubject">Asunto *</label>
+            <input class="form-control" [class.error]="(subject.invalid || !subject.value?.trim()) && (subject.touched || contactForm.submitted)" id="inputSubject" name="subject" type="text" placeholder="¿De qué se trata tu mensaje?" required ngModel #subject="ngModel">
+            @if ((subject.invalid || !subject.value?.trim()) && (subject.touched || contactForm.submitted)) {
+              <p class="form-error">El asunto es obligatorio.</p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputMessage">Mensaje *</label>
+            <textarea class="form-control" [class.error]="(message.invalid || !message.value?.trim() || message.value?.trim().length < 20) && (message.touched || contactForm.submitted)" id="inputMessage" name="message" rows="5" placeholder="Escribe tu mensaje aquí (mínimo 20 caracteres)..." required minlength="20" ngModel #message="ngModel"></textarea>
+            @if ((message.invalid || !message.value?.trim() || message.value?.trim().length < 20) && (message.touched || contactForm.submitted)) {
+              <p class="form-error">
+                {{ message.errors?.['required'] || !message.value?.trim() ? 'El mensaje es obligatorio.' : 'El mensaje debe tener al menos 20 caracteres.' }}
+              </p>
+            }
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Enviar mensaje</button>
+        </form>
+      </div>
+    }
+  </div>
+</main>

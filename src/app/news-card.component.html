@@ -1,0 +1,28 @@
+<article class="news-card">
+  <div class="card-img-wrap">
+    <img [src]="article.image" [alt]="article.title" loading="lazy">
+    <span class="card-badge-wrap">
+      <span class="badge" [class]="'badge badge-' + article.category">{{ article.category }}</span>
+    </span>
+    <button
+      class="card-fav-btn"
+      [class.active]="favorite"
+      type="button"
+      [attr.aria-label]="favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+      (click)="favoriteToggled.emit(article.id)"
+    >
+      <svg [attr.fill]="favorite ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">{{ article.date }} &middot; {{ article.author }}</p>
+    <h3 class="card-title">{{ article.title }}</h3>
+    <p class="card-summary">{{ article.summary }}</p>
+    <div class="card-footer">
+      <a class="btn-link btn-read-more" [routerLink]="['/noticias', article.id]">Leer más &rarr;</a>
+    </div>
+  </div>
+</article>

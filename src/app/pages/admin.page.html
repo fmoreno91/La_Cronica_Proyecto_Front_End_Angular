@@ -1,0 +1,90 @@
+<main class="page-main">
+  <div class="container">
+    <div class="page-title-wrap">
+      <h1 class="page-title display">Administrar noticias</h1>
+      <div class="divider-accent"></div>
+    </div>
+
+    <div class="admin-grid">
+      <section class="admin-card">
+        <h2 class="admin-card-title">Crear nueva noticia</h2>
+        @if (created) {
+          <div class="success-toast" role="status">Noticia publicada exitosamente.</div>
+        }
+
+        <form #createForm="ngForm" novalidate (ngSubmit)="publish(createForm)">
+          <div class="form-group">
+            <label class="form-label" for="newTitle">Título *</label>
+            <input class="form-control" [class.error]="(title.invalid || !title.value?.trim()) && (title.touched || createForm.submitted)" id="newTitle" name="title" type="text" placeholder="Título de la noticia" required [(ngModel)]="draft.title" #title="ngModel" (ngModelChange)="created = false">
+            @if ((title.invalid || !title.value?.trim()) && (title.touched || createForm.submitted)) {
+              <p class="form-error">El título es obligatorio.</p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newCategory">Categoría *</label>
+            <select class="form-control" id="newCategory" name="category" [(ngModel)]="draft.category">
+              @for (category of categories; track category) {
+                <option [value]="category">{{ category }}</option>
+              }
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newAuthor">Autor *</label>
+            <input class="form-control" [class.error]="(author.invalid || !author.value?.trim()) && (author.touched || createForm.submitted)" id="newAuthor" name="author" type="text" placeholder="Nombre del autor" required [(ngModel)]="draft.author" #author="ngModel">
+            @if ((author.invalid || !author.value?.trim()) && (author.touched || createForm.submitted)) {
+              <p class="form-error">El autor es obligatorio.</p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newSummary">Resumen *</label>
+            <textarea class="form-control" [class.error]="(summary.invalid || !summary.value?.trim()) && (summary.touched || createForm.submitted)" id="newSummary" name="summary" rows="3" placeholder="Breve descripción de la noticia..." required [(ngModel)]="draft.summary" #summary="ngModel"></textarea>
+            @if ((summary.invalid || !summary.value?.trim()) && (summary.touched || createForm.submitted)) {
+              <p class="form-error">El resumen es obligatorio.</p>
+            }
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newContent">Contenido completo *</label>
+            <textarea class="form-control" [class.error]="(content.invalid || !content.value?.trim()) && (content.touched || createForm.submitted)" id="newContent" name="content" rows="6" placeholder="Texto completo del artículo. Separa los párrafos con una línea en blanco." required [(ngModel)]="draft.content" #content="ngModel"></textarea>
+            @if ((content.invalid || !content.value?.trim()) && (content.touched || createForm.submitted)) {
+              <p class="form-error">El contenido es obligatorio.</p>
+            }
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Publicar noticia</button>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <h2 class="admin-card-title">Noticias publicadas ({{ news.articles().length }})</h2>
+        <div class="admin-news-list" aria-live="polite">
+          @for (article of news.articles(); track article.id) {
+            <div class="admin-news-item">
+              <img class="admin-news-thumb" [src]="article.image" [alt]="article.title" loading="lazy">
+              <div class="admin-news-info">
+                <p class="admin-news-cat mono">{{ article.category }} &middot; {{ article.date }}</p>
+                <p class="admin-news-title">{{ article.title }}</p>
+              </div>
+              <div class="admin-item-actions">
+                @if (confirmingDeleteId === article.id) {
+                  <div class="confirm-row">
+                    <button class="btn-delete-confirm" type="button" (click)="deleteArticle(article.id)">Eliminar</button>
+                    <button class="btn-cancel-delete" type="button" (click)="confirmingDeleteId = null">Cancelar</button>
+                  </div>
+                } @else {
+                  <button class="admin-delete-btn" type="button" [attr.aria-label]="'Eliminar ' + article.title" (click)="confirmingDeleteId = article.id">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                  </button>
+                }
+              </div>
+            </div>
+          } @empty {
+            <p class="text-muted">Todavía no hay noticias publicadas.</p>
+          }
+        </div>
+      </section>
+    </div>
+    <p class="admin-storage-note">Los cambios se guardan en el almacenamiento local de este navegador.</p>
+  </div>
+</main>

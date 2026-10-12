@@ -1,0 +1,34 @@
+<main class="page-main">
+  <div class="container">
+    <div class="page-title-wrap">
+      <h1 class="page-title display">Mis favoritos</h1>
+      <div class="divider-accent"></div>
+    </div>
+
+    @if (favorites().length === 0) {
+      <div class="fav-empty">
+        <svg class="fav-empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+        </svg>
+        <p class="fav-empty-title">Aún no tienes favoritos</p>
+        <p class="fav-empty-text">Guarda noticias que te interesen para encontrarlas fácilmente aquí.</p>
+        <a routerLink="/noticias" class="btn btn-primary">Explorar noticias</a>
+      </div>
+    } @else {
+      <p class="results-count">
+        {{ favorites().length }}
+        {{ favorites().length === 1 ? 'noticia guardada' : 'noticias guardadas' }}
+      </p>
+      <div class="grid-3" aria-live="polite">
+        @for (article of favorites(); track article.id) {
+          <app-news-card
+            [article]="article"
+            [favorite]="true"
+            (favoriteToggled)="news.toggleFavorite($event)"
+          />
+        }
+      </div>
+    }
+  </div>
+</main>
