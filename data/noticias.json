@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "Inteligencia Artificial transforma la educación universitaria en América Latina",
+    "summary": "Universidades de Colombia, México y Argentina adoptan herramientas de IA para personalizar el aprendizaje y reducir la deserción estudiantil.",
+    "content": "La inteligencia artificial está revolucionando la forma en que las universidades latinoamericanas abordan la educación superior. En Colombia, la Universidad Nacional ha implementado sistemas de tutoría virtual que analizan el rendimiento académico de cada estudiante y generan rutas de aprendizaje personalizadas. Los resultados iniciales muestran una reducción del 23% en la tasa de deserción durante el primer semestre de implementación.\n\nEn México, el Tecnológico de Monterrey lleva tres años desarrollando su plataforma \"TecIA\", que combina análisis predictivo con asistentes conversacionales para apoyar a los estudiantes en horarios donde no hay tutores disponibles. Argentina, por su parte, ha lanzado una iniciativa nacional que integra modelos de lenguaje en las plataformas educativas públicas.\n\nLos expertos señalan que la clave del éxito no está en reemplazar a los docentes, sino en liberarlos de tareas administrativas repetitivas para que puedan dedicar más tiempo a la mentoría real.",
+    "category": "Educación",
+    "author": "María Fernanda Ospina",
+    "date": "14 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop&auto=format",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Colombia bate récord de turistas internacionales en el primer semestre de 2026",
+    "summary": "Más de 4,2 millones de visitantes extranjeros llegaron al país entre enero y junio, impulsados por el auge del ecoturismo y el turismo cultural.",
+    "content": "Colombia recibió 4,2 millones de turistas internacionales durante el primer semestre de 2026, superando en un 31% las cifras del mismo período del año anterior, según el informe del Ministerio de Comercio, Industria y Turismo. El crecimiento responde a múltiples factores, entre ellos la consolidación de nuevas rutas aéreas directas desde Europa y Norteamérica, la promoción de destinos como el Amazonas colombiano y el Pacífico chocoano, y la creciente popularidad del café de especialidad como atractivo de agroturismo.\n\nCartagena sigue siendo el puerto de entrada preferido por cruceristas, mientras que Medellín consolida su posición como destino de turismo de negocios y tecnología. Bogotá, por su parte, ha visto un incremento notable en visitantes atraídos por su escena gastronómica y museos.\n\nEl impacto económico se estima en 6,8 billones de pesos, con una generación directa de 45.000 nuevos empleos en el sector.",
+    "category": "Turismo",
+    "author": "Andrés Camilo Ruiz",
+    "date": "12 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=500&fit=crop&auto=format",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Startups colombianas recaudan USD 820 millones en inversión durante 2026",
+    "summary": "El ecosistema tecnológico colombiano registra el año de mayor inversión de su historia, con fintech y agtech liderando las rondas de financiación.",
+    "content": "El ecosistema emprendedor de Colombia alcanzó un hito histórico en 2026 al atraer 820 millones de dólares en inversión de riesgo, según el reporte de iNNpulsa Colombia y el Ministerio TIC. Las startups del sector fintech captaron el 38% del total, seguidas por las de agtech (22%) y healthtech (18%).\n\nEntre las empresas emergentes más destacadas figura Uniminuto Pay, una plataforma de pagos rurales que ha facilitado la inclusión financiera de más de 200.000 agricultores en zonas sin cobertura bancaria. También sobresale GreenRoute, una solución de logística sostenible que optimiza rutas de distribución para reducir emisiones de carbono.\n\nLos inversores extranjeros, principalmente fondos de Silicon Valley y Madrid, señalan que Colombia ofrece una combinación única de talento técnico, mercado grande y costos competitivos.",
+    "category": "Comercio",
+    "author": "Valentina Herrera",
+    "date": "10 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop&auto=format",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Científicos colombianos descubren nueva especie de rana en el Parque Tayrona",
+    "summary": "El hallazgo, publicado en la revista Nature, amplía en 12 el número de especies anfibias conocidas en la Sierra Nevada de Santa Marta.",
+    "content": "Un equipo de investigadores del Instituto Humboldt y la Universidad del Magdalena reportó el descubrimiento de una nueva especie de rana del género Pristimantis en los bosques nublados del Parque Nacional Natural Tayrona. La especie, bautizada Pristimantis tairona en honor a la cultura indígena de la región, presenta un patrón de coloración dorsal único con manchas turquesa sobre fondo marrón oscuro.\n\nEl hallazgo fue posible gracias al uso de análisis de ADN ambiental (eDNA), una técnica que permite detectar la presencia de organismos a través del material genético que dejan en el agua o el suelo.\n\nColombia es el país con mayor diversidad de anfibios del mundo, con más de 900 especies registradas. El descubrimiento refuerza la urgencia de proteger los ecosistemas de alta montaña caribeña.",
+    "category": "Ciencia",
+    "author": "Jorge Alejandro Méndez",
+    "date": "8 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=500&fit=crop&auto=format",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Medellín inaugura el corredor tecnológico más grande de Sudamérica",
+    "summary": "El 'Valle del Software' del Distrito de Innovación alberga ya 340 empresas tech y genera 18.000 empleos directos en la ciudad.",
+    "content": "Medellín inauguró oficialmente el corredor tecnológico \"Valle del Software\", un complejo de 47 edificios distribuidos en 12 hectáreas del Distrito de Innovación que convierte a la ciudad en el polo tecnológico más importante de Sudamérica en términos de concentración empresarial.\n\nEl proyecto, gestado durante seis años, reúne desde startups en etapa temprana hasta centros de I+D de empresas multinacionales como Microsoft, Oracle y SAP. El alcalde Federico Gutiérrez destacó que el Valle del Software ha generado 18.000 empleos directos con salarios promedio 2,3 veces superiores al salario mínimo nacional.\n\nEl corredor cuenta con fibra óptica de última generación, centros de datos con certificación Tier IV y espacios de coworking con capacidad para 5.000 trabajadores simultáneos.",
+    "category": "Tecnología",
+    "author": "Sebastián Cardona",
+    "date": "5 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop&auto=format",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "El comercio electrónico rural creció 187% gracias a la conectividad del MinTIC",
+    "summary": "Campesinos de 23 departamentos ya venden sus productos directamente a consumidores urbanos, eliminando intermediarios y aumentando sus ingresos.",
+    "content": "El programa \"Campo Digital\" del Ministerio de las TIC reportó un crecimiento del 187% en transacciones de comercio electrónico rural durante el último año, gracias a la instalación de 14.000 kilómetros de fibra óptica en zonas antes sin conectividad.\n\nEn el departamento de Boyacá, familias productoras de papa criolla y arándanos ahora venden directamente a restaurantes y tiendas gourmet de Bogotá a través de plataformas como AgroMarket y CampoFácil. El resultado es un incremento del 45% en los ingresos netos de los productores.\n\nEl MinTIC también ha capacitado a más de 80.000 personas en competencias digitales básicas y avanzadas. \"No se trata solo de llevar internet, sino de asegurarnos de que las comunidades puedan aprovecharlo\", señaló la ministra Paula Herrera.",
+    "category": "Comercio",
+    "author": "Luisa Fernanda Gómez",
+    "date": "3 de septiembre, 2026",
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=500&fit=crop&auto=format",
+    "featured": false
+  }
+]
