@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --base-href /La_Cronica_Proyecto_Front_End_Angular/ && ngh --dir=dist/la-cronica-angular/browser"
   },
   "private": true,
   "packageManager": "npm@12.2.0",

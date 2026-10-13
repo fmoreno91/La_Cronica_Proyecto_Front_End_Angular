@@ -18,7 +18,21 @@ Comandos disponibles:
 ```bash
 npm test
 npm run build
+npm run deploy
 ```
+
+## Despliegue en GitHub Pages
+
+El proyecto está configurado para desplegarse automáticamente en GitHub Pages usando `angular-cli-ghpages`:
+
+```bash
+npm run deploy
+```
+
+Este comando compila el proyecto con la ruta base (`--base-href /La_Cronica_Proyecto_Front_End_Angular/`) y publica el contenido en la rama `gh-pages` con soporte para rutas SPA (`404.html`) y deshabilitando Jekyll (`.nojekyll`).
+
+La URL pública en GitHub Pages es:
+`https://fmoreno91.github.io/La_Cronica_Proyecto_Front_End_Angular/`
 
 ## Secciones
 
